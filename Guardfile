@@ -1,3 +1,6 @@
+# A sample Guardfile
+# More info at https://github.com/guard/guard#readme
+
 require 'active_support/core_ext'
 
 guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' } do
@@ -9,6 +12,7 @@ guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAIL
   watch('Gemfile.lock')
   watch('spec/spec_helper.rb')
   watch('test/test_helper.rb')
+  watch('spec/support/')
 end
 
 guard 'rspec', :version => 2, :all_after_pass => false, :cli => '--drb' do
@@ -40,4 +44,3 @@ guard 'rspec', :version => 2, :all_after_pass => false, :cli => '--drb' do
     "spec/requests/#{m[1].singularize}_pages_spec.rb"
   end
 end
-
